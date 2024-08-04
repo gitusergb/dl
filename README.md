@@ -5,7 +5,7 @@
 
 ---
 
-[DL Netlify Link](https://gleaming-sundae-5cfc62.netlify.app/
+[DL Netlify Link](https://gleaming-sundae-5cfc62.netlify.app/)
 
 ---
 
