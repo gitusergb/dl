@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import productReducer from './features/products/productSlice';
+import ProductList from './components/ProductList';
+import AddProductModal from './components/AddProductModal';
+import styled from 'styled-components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const store = configureStore({
+    reducer: {
+        products: productReducer,
+    },
+});
+
+const App = () => {
+
+    return (
+        <Provider store={store}>
+            <Container>
+                <ProductList />
+            </Container>
+        </Provider>
+    );
+};
 
 export default App;
+// Styled components
+const Container = styled.div`
+    /* Styles */
+    
+    background-color:#dbe8f4;
+    padding: 10px;
+    div{
+        padding: 10px;
+    }
+`;

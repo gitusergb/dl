@@ -1,4 +1,73 @@
-# Getting Started with Create React App
+
+# Product Directory Listing
+
+## Description
+
+The Product Directory Listing app is a web tool for managing and displaying products, built with React, Redux Toolkit, and styled-components, featuring add, edit, filter, paginate, and bulk action capabilities in a clean, responsive interface.
+
+## Features
+
+- **Home Page**: Displays a list of products with options for quick edit and adding product details.
+- **Add Product Modal**: Allows users to add new products by selecting product type, material, and grade.
+- **Quick Edit**: Enables users to quickly edit product details directly in the list.
+- **Filtering**: Users can filter the product list based on product type and material.
+- **Search**: Users can search for products using a search bar.
+- **Pagination**: Supports pagination to view products in chunks of 10 per page.
+- **Bulk Actions**: Users can select multiple products and perform actions on them.
+
+## Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/directory-listing.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd directory-listing
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+1. Start the development server:
+    ```
+    npm start
+    ```
+2. Open your browser and navigate to `http://localhost:3000`.
+
+## Technologies Used
+
+- **React**: For building the user interface.
+- **Redux Toolkit**: For state management.
+- **Styled-Components**: For styling the application.
+- **API**: Fetches product data from the provided API.(`https://bb-nwfw.onrender.com/hw`)
+
+## Components
+
+- **ProductList**: Displays the list of products with filtering, search, and pagination.
+- **AddProductModal**: Modal for adding new products.
+- **Filter**: Filters the product list based on selected criteria.
+- **ProductRow**: Displays individual product details with quick edit options.
+- **Pagination**: Handles pagination of the product list.
+
+## Styles
+
+Global styles and responsiveness are handled in `App.css` using media queries.
+
+
+
+## Contribute
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+
+
+
+
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +136,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
