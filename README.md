@@ -18,15 +18,15 @@ The Product Directory Listing app is a web tool for managing and displaying prod
 ## Installation
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/your-username/directory-listing.git
+    ```
+    git clone https://github.com/gitusergb/dl.git
     ```
 2. Navigate to the project directory:
-    ```bash
-    cd directory-listing
+    ```
+    cd dl
     ```
 3. Install dependencies:
-    ```bash
+    ```
     npm install
     ```
 
@@ -63,7 +63,10 @@ Global styles and responsiveness are handled in `App.css` using media queries.
 
 Contributions are welcome! Please open an issue or submit a pull request.
 
+### created by
+Gauri Bidwai
 
+## Thank You !
 
 
 
