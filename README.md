@@ -1,6 +1,14 @@
 
 # Product Directory Listing
 
+![dl](https://i.ibb.co/jk4WKbR/dl.png)
+
+---
+
+[DL Netlify Link](https://gleaming-sundae-5cfc62.netlify.app/
+
+---
+
 ## Description
 
 The Product Directory Listing app is a web tool for managing and displaying products, built with React, Redux Toolkit, and styled-components, featuring add, edit, filter, paginate, and bulk action capabilities in a clean, responsive interface.
@@ -14,6 +22,13 @@ The Product Directory Listing app is a web tool for managing and displaying prod
 - **Search**: Users can search for products using a search bar.
 - **Pagination**: Supports pagination to view products in chunks of 10 per page.
 - **Bulk Actions**: Users can select multiple products and perform actions on them.
+
+---
+
+
+![dl](https://i.ibb.co/w6sY12S/dl2.png)
+
+---
 
 ## Installation
 
