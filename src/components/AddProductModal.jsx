@@ -36,20 +36,38 @@ const AddProductModal = ({ isOpen, onClose }) => {
                 <select onChange={(e) => setProduct(e.target.value)}>
                     {/* Product options */}
                     <option value="" disabled selected> Products</option>
-                    <option value="Pipes">Pipes</option>
-                    <option value="Alley Stad">Alley Stad</option>
+                    <option value="Pipes">Pipes 21</option>
+                    <option value="Forget Fittings">Forget Fittings 28</option>
+                        <option value="Henges">Henges 28</option>
+                        <option value="Dustles Seve">Dustles Seve 28</option>
+                        <option value="Mali">Mali 27</option>
                 </select>
                 <select onChange={(e) => setMaterial(e.target.value)}>
                     {/* Material options */}
                     <option value="" disabled selected> Material</option>
-                    <option value="Dustles Seve">Dustles Seve</option>
-                    <option value="fitainless Steel">fitainless Steel</option>
+                        <option value="Tubing">Tubing 21</option>
+                        <option value="Fique Firrings">Fique Firrings 28</option>
+                        <option value="apper Nickel">apper Nickel 28</option>
+                        <option value="A Pres">A Pres 28</option>
+                        <option value="Forget Fittings">Forget Fittings 28</option>
+                        <option value="Henges">Henges 28</option>
+                        <option value="Dustles Seve">Dustles Seve 28</option>
+                        <option value="Mali">Mali 27</option>
+                        <option value="Instrumentationinge">Instrumentationinge 27</option>
+                        <option value="Sheet & Pa">Sheet & Pa 27</option>
+                        <option value="Love Temporate Car">Love Temporate Car 27</option>
+                        <option value="Bars">Bars 27</option>
+                        <option value="Menu">Menu 27</option>
+                        <option value="fitainless Steel">fitainless Steel 27</option>
+                        <option value="Trankum">Trankum 27</option>
+                        
                 </select>
                 <select onChange={(e) => setGrade(e.target.value)}>
                     {/* Grade options */}
                     <option value="" disabled selected> Grades</option>
                     <option value="1">1</option>
                     <option value="3">3</option>
+                    <option value="6">6</option>
                 </select>
                 </ModalMain>
                 <ButtonContainer>
@@ -99,13 +117,14 @@ const ModalContent = styled.div`
     }
 
     button {
-        padding: 10px 20px;
+        padding: 10px 30px;
         margin-right: 10px;
         border: none;
         background: #3474e6;
         color: white;
         cursor: pointer;
         border-radius: 50px;
+        font-size: small;
     }
 
     button:last-of-type {

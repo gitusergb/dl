@@ -18,7 +18,7 @@ const App = () => {
 
     return (
         <Provider store={store}>
-            <Container>
+            <Container className='container'>
                 <ProductList />
             </Container>
         </Provider>
@@ -32,7 +32,8 @@ const Container = styled.div`
     
     background-color:#dbe8f4;
     padding: 10px;
+    /* border: 1px solid orange; */
     div{
-        padding: 10px;
+        padding: 5px;
     }
 `;

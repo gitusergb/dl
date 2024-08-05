@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import ProductRow from './ProductRow';
 import Filter from './Filter';
 import Pagination from './Pagination';
-import { fetchProducts } from '../features/products/productSlice';
+import { fetchProducts , filterProducts} from '../features/products/productSlice';
 import AddProductModal from './AddProductModal';
 
 
@@ -36,7 +36,7 @@ const ProductList = () => {
     <ProductC>
       <First>
         <Pbutton onClick={() => setIsModalOpen(true)}>+ Add Products</Pbutton>
-        <span><span className='Bol'>280/400</span> Products</span>
+        <span><span className='Bol'>{totalProducts}</span> Products</span>
       </First>
       <AddProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Sec>
@@ -45,12 +45,17 @@ const ProductList = () => {
       </Sec>
 
       <Filter />
-
+     
+      <MyT>
       <TABLE>
         <thead>
           <tr>
             <StyledTh>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrSnCj0MQ6UqCG7zuVTtuaXBs9ELvpZ372_Q&s" alt="square" />Products
+              <ImgNa>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrSnCj0MQ6UqCG7zuVTtuaXBs9ELvpZ372_Q&s" alt="square" /></li>
+                <li>Products</li>
+              </ImgNa>
+              
             </StyledTh>
             <StyledTh>Action</StyledTh>
             <StyledTh>Product Details</StyledTh>
@@ -62,7 +67,10 @@ const ProductList = () => {
             <ProductRow key={index} product={product} />
           ))}
         </tbody>
-      </TABLE>
+   
+        </TABLE>
+        </MyT>
+        
       <Pagination
         currentPage={currentPage}
         totalCount={totalProducts}
@@ -84,11 +92,11 @@ const ProductC = styled.div`
     color: #fafdfd;
     width: 250px;
     height: 40px;
-    padding: 5px;
+    padding: 10px 20px;
     font-size: large;
     border-color: #b0bdbc;
     border-radius: 50px;
-  
+    cursor: pointer;
 `;
 
 const First = styled.div`
@@ -120,20 +128,31 @@ const Sec = styled.div`
   button {
     background-color: #3474e6;
     color: #fafdfd;
-    width: 100px;
+    width: 150px;
     height: 40px;
-    padding: 5px;
+    padding: 5px 15px 5px 5px;
     font-size: large;
     border-color: #b0bdbc;
     border-radius: 0px 10px 10px 0px;
+    cursor: pointer;
   }
+`;
+const MyT = styled.div`
+background-color: #ffffff29;
+display: block;
+  width: 99%;
+  /* border: 1px solid yellow; */
+  border-radius: 10px;
+  
 `;
 
 const TABLE = styled.table`
 background-color: white;
   width: 100%;
-  border-collapse: collapse;
   border-radius: 10px;
+  border-collapse: collapse;
+  justify-content: left;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   img {
     height: 20px;
     width: auto;
@@ -141,8 +160,15 @@ background-color: white;
 `;
 
 const StyledTh = styled.th`
-  background-color: cyan;
+  background-color: #73ceff;
   padding: 10px;
   text-align: left;
   border: none;
 `;
+const ImgNa = styled.ul`
+list-style-type:none;
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 20px;
+`

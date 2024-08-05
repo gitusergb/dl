@@ -17,7 +17,14 @@ const ProductRow = ({ product }) => {
 
     return (
         <TR>
-            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrSnCj0MQ6UqCG7zuVTtuaXBs9ELvpZ372_Q&s" alt="square" />{product.name}</td>
+            
+            <td>
+                <ImgNa>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrSnCj0MQ6UqCG7zuVTtuaXBs9ELvpZ372_Q&s" alt="square" /></li>
+                <li>{product.name}</li>
+            </ImgNa>
+                
+                </td>
             <td>
                 <button onClick={handleQuickEdit}>Quick Edit | Add Product Details</button>
                 {isEditing && (
@@ -28,8 +35,15 @@ const ProductRow = ({ product }) => {
                     </div>
                 )}
             </td>
-            <td>{product.material}</td>
-            <td>{product.grade}</td>
+            <td>
+                <ul>
+                <li>Material:{product.material}</li>
+                <li>Length:{product.Length}</li>
+                <li>Shape:{product.Shape}</li>
+            </ul>
+
+            </td>
+            <td>{product.Price}</td>
            
         </TR>
     );
@@ -38,7 +52,9 @@ const ProductRow = ({ product }) => {
 export default ProductRow;
 const TR = styled.tr`
     /* Styles */
-    border-bottom: 1px solid gray;
+   
+ border-bottom: 1px solid gray;
+ 
     button {
     background-color:#d2fcfc1f;
     color:#4e8d8d;
@@ -47,6 +63,14 @@ const TR = styled.tr`
     padding: 5px;
     font-size: small;
    border: none;
-  
+   cursor: pointer;
   }
 `;
+
+const ImgNa = styled.ul`
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 5px;
+gap: 10px;
+`

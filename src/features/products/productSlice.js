@@ -27,8 +27,9 @@ const productSlice = createSlice({
             }
         },
         filterProducts: (state, action) => {
+            const { type, value } = action.payload;
             state.filteredProducts = state.products.filter(product => 
-                product.product.includes(action.payload) || product.material.includes(action.payload)
+                product.product[type].includes(value) || product.material.includes(action.payload)
             );
         },
     },

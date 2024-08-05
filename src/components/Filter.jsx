@@ -6,31 +6,63 @@ import styled from 'styled-components';
 const Filter = () => {
     const dispatch = useDispatch();
 
-    const handleFilterChange = (e) => {
-        dispatch(filterProducts(e.target.value));
+    const handleProductChange = (e) => {
+        dispatch(filterProducts({ type: 'name', value: e.target.value }));
+    };
+
+    const handleMaterialChange = (e) => {
+        dispatch(filterProducts({ type: 'material', value: e.target.value }));
+    };
+
+    const handleBulkActionChange = (e) => {
+        // will Add bulk action handling logic 
+    };
+
+    const handleNumberChange= (e) => {
+        // will Add Number of products needed
     };
 
     return (
         <Hori>
             <div>
-            <select onChange={handleFilterChange}>
-               <option value="Products">Products</option>
+            <select onChange={handleProductChange}>
+               <option value="Products" disabled selected>Products</option>
+                <option value="Pipes">Pipes</option>
+                <option value="Alley Stad">Alley Stad</option>
+                <option value="Aluminum F22 Pins">Aluminum F22 Pins</option>
+                <option value="Tubing">Tubing</option>
             </select>
-            <select onChange={handleFilterChange}>
-            <option value="Materials">Materials</option>
+            <select onChange={handleMaterialChange}>
+            <option value="Materials" disabled selected>Materials</option>
+            <option value="Fique Firrings">Fique Firrings</option>      
+            <option value="apper Nickel">apper Nickel</option>
+            <option value="A Pres">A Pres</option>
+            <option value="Forget Fittings">Forget Fittings</option>    
+            <option value="Henges">Henges</option>
+            <option value="Dustles Seve">Dustles Seve</option>
+            <option value="Mali">Mali</option>
+            <option value="Instrumentationinge">Instrumentationinge</option>
+            <option value="Sheet & Pa">Sheet & Pa</option>
+            <option value="Love Temporate Car">Love Temporate Car</option>
+            <option value="Bars">Bars</option>
+            <option value="Menu">Menu</option>
+            <option value="fitainless Steel">fitainless Steel</option>
+            <option value="Trankum">Trankum</option>
             </select>
             <input type="text" placeholder='Filter'/>
             </div>
             <div>
-            <select onChange={handleFilterChange}>
-               <option value="BulkActions">Bulk Actions</option>
+            <select onChange={handleBulkActionChange}>
+               <option value="BulkActions" disabled selected>Bulk Actions</option>
             </select>
             <input type="text" placeholder='Apply'/>
             </div>
             <div>
-            <input type="text" placeholder='Product'/>
-            <select onChange={handleFilterChange}>
-            <option value="25">25</option>
+            <span>Products</span>
+            <select onChange={handleNumberChange}>
+            {[...Array(18).keys()].map(i => (
+                        <option value={i+1} key={i}>{i+1}</option>
+                    ))}
             </select>
            
             </div>
@@ -42,26 +74,26 @@ const Filter = () => {
 
 export default Filter;
 const  Hori = styled.div`
+width: 99%;
 display: flex;
-justify-content: space-between;
+justify-content:space-between;
 div{
     display: flex;
-justify-content: space-between;
 gap: 10px;
 }
 span{
     color:black;
-    background-color:white;
-    width: 250px;
+    background-color:#d1e9e75a;
+    width: 70px;
     height: 30px;
-    padding: 5px;
+    padding: 5px 2px 5px 2px;
     border-radius: 50px;
     border-color: #b0bdbc;
     /* border: 1px solid; */
 }
 input{
     border: 0px;
-    width: 50px;
+    width: 60px;
     height: 30px;
     border-radius: 10px;
     justify-content: center;
