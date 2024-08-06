@@ -7,21 +7,27 @@ import styled from 'styled-components';
 import ProductRow from './ProductRow';
 import Filter from './Filter';
 import Pagination from './Pagination';
-import { fetchProducts , filterProducts} from '../features/products/productSlice';
+import { fetchProducts , filterProducts,searchProducts } from '../features/products/productSlice';
 import AddProductModal from './AddProductModal';
 
 
 
 const ProductList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.filteredProducts);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 10;
+  const productsPerPage = 5;
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  const handleSearch = () => {
+    // console.log(searchTerm ,typeof(searchTerm))
+    dispatch(searchProducts({ type:'search',value:searchTerm }));
+  };
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -40,8 +46,14 @@ const ProductList = () => {
       </First>
       <AddProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Sec>
-        <input type="text" name='search' placeholder='Search Products ...' />
-        <button>Search</button>
+        <input
+          type="text"
+          name="search"
+          placeholder="Search Products ..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
       </Sec>
 
       <Filter />

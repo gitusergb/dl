@@ -56,6 +56,17 @@
     border-radius: 5px;
     border: 1px solid #ccc;
   }
+
+
+  .flexclass{
+    display: flex;
+    justify-content:center;
+  }
+  .flexrowclass{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+  }
   
   /* Media Queries */
   @media (max-width: 1200px) {

@@ -11,9 +11,9 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
 // Add a new product to the server and update the state
 export const addProduct = createAsyncThunk('products/addProduct', async (product, { rejectWithValue }) => {
     try {
-        console.log('Adding product:', product);
+       //console.log('Adding product:', product);
         const response = await axios.post('https://pl-uzk8.onrender.com/hwpro/create', product);
-        console.log('Product added:', response.data);
+        //console.log('Product added:', response.data);
         return response.data;
     } catch (error) {
         console.error('Error adding product:', error);
@@ -25,9 +25,17 @@ export const addProduct = createAsyncThunk('products/addProduct', async (product
 export const updateProduct = createAsyncThunk('products/updateProduct', async ({productID, updates }) => {
     // console.log('Product',typeof(+productID), id, updates );
     const response = await axios.patch(`https://pl-uzk8.onrender.com/hwpro/update/${productID}`, updates);
-    console.log('Product',response.data );
+    console.log('Product data',response.data );
     return response.data;
 });
+
+export const searchProducts = createAsyncThunk('products/searchProducts', async (searchTerm) => {
+    const response = await axios.get(`https://pl-uzk8.onrender.com/hwpro/search`, {
+        params: { q: searchTerm }
+    });
+    return response.data;
+});
+
 const productSlice = createSlice({
     name: 'products',
     initialState: {
@@ -42,7 +50,7 @@ const productSlice = createSlice({
             state.filteredProducts = state.products.filter(product => 
                 product.product[type].includes(value) || product.material.includes(action.payload)
             );
-        },
+        }
     },
 
     extraReducers: (builder) => {
@@ -68,14 +76,26 @@ const productSlice = createSlice({
                 state.error = action.payload || action.error.message;
             })
             .addCase(updateProduct.fulfilled, (state, action) => {
+                
                 const index = state.products.findIndex(p => p._id === action.payload._id);
                 if (index !== -1) {
                     state.products[index] = action.payload;
                     state.filteredProducts = state.products;
                 }
+            })
+            .addCase(searchProducts.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(searchProducts.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.filteredProducts = action.payload;
+            })
+            .addCase(searchProducts.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
             });
     },
 });
 
-export const { filterProducts } = productSlice.actions;
+export const { filterProducts} = productSlice.actions;
 export default productSlice.reducer;
