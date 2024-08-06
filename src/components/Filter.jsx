@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterProducts } from '../features/products/productSlice';
 import styled from 'styled-components';
@@ -49,7 +49,7 @@ const Filter = () => {
             <option value="fitainless Steel">fitainless Steel</option>
             <option value="Trankum">Trankum</option>
             </select>
-            <input type="text" placeholder='Filter'/>
+            <input type="text" placeholder='Filter' name='Filter'/>
             </div>
             <div>
             <select onChange={handleBulkActionChange}>

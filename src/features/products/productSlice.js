@@ -2,8 +2,30 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
+
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-    const response = await axios.get('https://bb-nwfw.onrender.com/hw');
+    const response = await axios.get('https://pl-uzk8.onrender.com/hwpro/');
+    return response.data;
+});
+// Add a new product to the server and update the state
+export const addProduct = createAsyncThunk('products/addProduct', async (product, { rejectWithValue }) => {
+    try {
+        console.log('Adding product:', product);
+        const response = await axios.post('https://pl-uzk8.onrender.com/hwpro/create', product);
+        console.log('Product added:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error adding product:', error);
+        return rejectWithValue(error.response.data);
+    }
+});
+
+
+export const updateProduct = createAsyncThunk('products/updateProduct', async ({productID, updates }) => {
+    // console.log('Product',typeof(+productID), id, updates );
+    const response = await axios.patch(`https://pl-uzk8.onrender.com/hwpro/update/${productID}`, updates);
+    console.log('Product',response.data );
     return response.data;
 });
 const productSlice = createSlice({
@@ -15,17 +37,6 @@ const productSlice = createSlice({
         error: null
     },
     reducers: {
-        addProduct: (state, action) => {
-            state.products.push(action.payload);
-            state.filteredProducts.push(action.payload);
-        },
-        updateProduct: (state, action) => {
-            const index = state.products.findIndex(product => product.id === action.payload.id);
-            if (index !== -1) {
-                state.products[index] = { ...state.products[index], ...action.payload.details };
-                state.filteredProducts[index] = { ...state.filteredProducts[index], ...action.payload.details };
-            }
-        },
         filterProducts: (state, action) => {
             const { type, value } = action.payload;
             state.filteredProducts = state.products.filter(product => 
@@ -47,9 +58,24 @@ const productSlice = createSlice({
             .addCase(fetchProducts.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
+            })
+            .addCase(addProduct.fulfilled, (state, action) => {
+                state.products.push(action.payload);
+                state.filteredProducts.push(action.payload);
+            })
+            .addCase(addProduct.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.payload || action.error.message;
+            })
+            .addCase(updateProduct.fulfilled, (state, action) => {
+                const index = state.products.findIndex(p => p._id === action.payload._id);
+                if (index !== -1) {
+                    state.products[index] = action.payload;
+                    state.filteredProducts = state.products;
+                }
             });
     },
 });
 
-export const { addProduct, updateProduct, filterProducts } = productSlice.actions;
+export const { filterProducts } = productSlice.actions;
 export default productSlice.reducer;

@@ -6,13 +6,14 @@ import styled from 'styled-components';
 const ProductRow = ({ product }) => {
     const dispatch = useDispatch();
     const [isEditing, setIsEditing] = useState(false);
-    const [details, setDetails] = useState({ ...product.details });
+    const [details, setDetails] = useState({ ...product.details});
 
     const handleQuickEdit = () => setIsEditing(!isEditing);
     const handleChange = (e) => setDetails({ ...details, [e.target.name]: e.target.value });
     const handleSave = () => {
-        dispatch(updateProduct({ id: product.id, details }));
-        setIsEditing(false);
+       // console.log(product , product._id, details)
+        dispatch(updateProduct({ productID: product._id, updates:details }));
+        setIsEditing(true);
     };
 
     return (
@@ -28,9 +29,13 @@ const ProductRow = ({ product }) => {
             <td>
                 <button onClick={handleQuickEdit}>Quick Edit | Add Product Details</button>
                 {isEditing && (
-                    <div>
-                        <input name="shape" value={details.shape} onChange={handleChange} placeholder="Shape" />
-                        <input name="length" value={details.length} onChange={handleChange} placeholder="Length" />
+                    <div> 
+                        <input name="material" value={details.material} onChange={handleChange} placeholder="Material" />
+                    <input name="grade" value={details.grade} onChange={handleChange} placeholder="Grade" />
+                    <input name="shape" value={details.shape} onChange={handleChange} placeholder="Shape" />
+                    <input name="length" value={details.length} onChange={handleChange} placeholder="Length" />
+                    <input name="price" value={details.price} onChange={handleChange} placeholder="Price" />
+                       
                         <button onClick={handleSave}>Save</button>
                     </div>
                 )}
@@ -40,6 +45,8 @@ const ProductRow = ({ product }) => {
                 <li>Material:{product.material}</li>
                 <li>Length:{product.Length}</li>
                 <li>Shape:{product.Shape}</li>
+                <li>Price: {product.price}</li>
+
             </ul>
 
             </td>

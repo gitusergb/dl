@@ -36,7 +36,7 @@ const ProductList = () => {
     <ProductC>
       <First>
         <Pbutton onClick={() => setIsModalOpen(true)}>+ Add Products</Pbutton>
-        <span><span className='Bol'>{totalProducts}</span> Products</span>
+        <span><span className='Bol'>{totalProducts}/400</span> Products</span>
       </First>
       <AddProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Sec>

@@ -5,12 +5,13 @@ import { addProduct } from '../features/products/productSlice';
 
 const AddProductModal = ({ isOpen, onClose }) => {
     const dispatch = useDispatch();
-    const [product, setProduct] = useState('');
+    const [name, setName] = useState('');
     const [material, setMaterial] = useState('');
     const [grade, setGrade] = useState('');
 
     const handleSubmit = () => {
-        dispatch(addProduct({ product, material, grade }));
+        console.log({ name, material, grade })
+        dispatch(addProduct({ name, material, grade }));
      
     };
 
@@ -33,10 +34,10 @@ const AddProductModal = ({ isOpen, onClose }) => {
                         <CloseButton onClick={handleClose}>&times;</CloseButton>
                 </ModalFir>
                 <ModalMain>
-                <select onChange={(e) => setProduct(e.target.value)}>
+                <select onChange={(e) => setName(e.target.value)}>
                     {/* Product options */}
                     <option value="" disabled selected> Products</option>
-                    <option value="Pipes">Pipes 21</option>
+                    <option value="Pipes" type="text"name="Pipes">Pipes 21</option>
                     <option value="Forget Fittings">Forget Fittings 28</option>
                         <option value="Henges">Henges 28</option>
                         <option value="Dustles Seve">Dustles Seve 28</option>
