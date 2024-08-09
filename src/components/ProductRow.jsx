@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateProduct } from '../features/products/productSlice';
+import React, { useState,useEffect } from 'react';
+import { useDispatch , useSelector } from 'react-redux';
+import { updateProduct , fetchProducts} from '../features/products/productSlice';
 import styled from 'styled-components';
 
 const ProductRow = ({ product }) => {
     const dispatch = useDispatch();
     const [isEditing, setIsEditing] = useState(false);
     const [details, setDetails] = useState({ ...product.details});
+
     const handleClose = () => setIsEditing(false);
+    const products = useSelector(state => state.products.items);
     // const handleQuickEdit = () => setIsEditing(!isEditing);
+    
+    useEffect(() => {
+        setDetails({ ...product.details });
+    }, [product]);
+
+    useEffect(() => {
+        dispatch(fetchProducts());
+    }, [dispatch]);
+
     const handleQuickEdit = () => {
         setIsEditing(true);
     };
